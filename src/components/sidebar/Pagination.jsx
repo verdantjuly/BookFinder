@@ -1,6 +1,6 @@
 import "./Pagination.css";
 
-export default function Pagination({ page, setPage, searchBooks }) {
+export default function Pagination({ page, setPage, searchBooks, isEnd }) {
   const handlePrev = () => {
     setPage(page - 1);
     searchBooks();
@@ -13,9 +13,13 @@ export default function Pagination({ page, setPage, searchBooks }) {
     <div>
       <hr />
       <div className="pagination">
-        <button onClick={handlePrev}>이전</button>
+        <button onClick={handlePrev} disabled={page === 1}>
+          이전
+        </button>
         <span>{page}</span>
-        <button onClick={handleNext}>다음</button>
+        <button onClick={handleNext} disabled={isEnd === true}>
+          다음
+        </button>
       </div>
     </div>
   );
