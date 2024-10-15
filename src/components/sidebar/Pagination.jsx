@@ -11,9 +11,12 @@ export default function Pagination({ page, setPage, searchBooks }) {
   };
   return (
     <div>
-      <button onClick={handlePrev}>이전</button>
-      <span>{page}</span>
-      <button onClick={handleNext}>다음</button>
+      <hr />
+      <div className="pagination">
+        <button onClick={handlePrev}>이전</button>
+        <span>{page}</span>
+        <button onClick={handleNext}>다음</button>
+      </div>
     </div>
   );
 }
