@@ -1,7 +1,7 @@
 import "./BookDetail.css";
 
 export default function BookDetail({ book }) {
-  if (!Object.keys(book).length) {
+  if (!book) {
     return <div className="book-detail">책을 선택하세요.</div>;
   }
   return (

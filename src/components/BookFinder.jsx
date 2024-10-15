@@ -5,7 +5,7 @@ import BookDetail from "./BookDetail";
 import { useState } from "react";
 
 export default function BookFinder() {
-  const [book, setBook] = useState({});
+  const [book, setBook] = useState(null);
   return (
     <div className="App">
       <Header />
