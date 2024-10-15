@@ -17,7 +17,7 @@ export default function BookDetail({ book }) {
       </p>
       <p>
         <strong>출판일 : </strong>
-        {book.datetime}
+        {book.datetime.split("T")[0]}
       </p>
       <p>
         <strong>ISBN : </strong>
