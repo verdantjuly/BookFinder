@@ -29,7 +29,7 @@ export default function BookDetail({ book }) {
       </p>
       <p>
         <strong>URL : </strong>
-        <a src={book.url}>상세정보</a>
+        <a href={book.url}>상세정보</a>
       </p>
       <img src={book.thumbnail} alt={`${book.title}의 썸네일`} />
     </div>
