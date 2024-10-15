@@ -1,9 +1,9 @@
 import Footer from "./Footer";
 import Header from "./Header";
-import SearchArea from "./SearchArea";
+import SearchArea from "./sidebar/SearchArea";
+import BookDetail from "./BookDetail";
 
 import "./BookFinder.css";
-import BookDetail from "./BookDetail";
 
 export default function BookFinder() {
   return (

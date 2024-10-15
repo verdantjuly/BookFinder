@@ -2,8 +2,10 @@ import axios from "axios";
 import { useState } from "react";
 
 import SearchBar from "./SearchBar";
+import BookList from "./BookList";
 
 import "./SearchArea.css";
+import Pagination from "./Pagination";
 
 export default function SearchArea() {
   const [query, setQuery] = useState("한강");
@@ -13,7 +15,7 @@ export default function SearchArea() {
   const findBooks = async () => {
     const response = await axios.get(`https://dapi.kakao.com/v3/search/book`, {
       headers: { Authorization: `KakaoAK ${process.env.REACT_APP_REST_API}` },
-      params: { query, page, size: 1 },
+      params: { query, page, size: 10 },
     });
     const data = response.data;
     setBooks(data.documents);
@@ -25,11 +27,14 @@ export default function SearchArea() {
       <SearchBar
         query={query}
         setQuery={setQuery}
+        findBooks={findBooks}
         searchBooks={() => {
           setPage(1);
           findBooks();
         }}
       />
+      <BookList books={books} />
+      <Pagination page={page} setPage={setPage} searchBooks={findBooks} />
     </div>
   );
 }
