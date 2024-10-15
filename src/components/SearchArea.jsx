@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 
+import SearchBar from "./SearchBar";
+
 import "./SearchArea.css";
 
 export default function SearchArea() {
@@ -8,7 +10,7 @@ export default function SearchArea() {
   const [page, setPage] = useState(1);
   const [books, setBooks] = useState([]);
 
-  const searchBooks = async () => {
+  const findBooks = async () => {
     const response = await axios.get(`https://dapi.kakao.com/v3/search/book`, {
       headers: { Authorization: `KakaoAK ${process.env.REACT_APP_REST_API}` },
       params: { query, page, size: 1 },
@@ -20,13 +22,14 @@ export default function SearchArea() {
 
   return (
     <div className="search-area">
-      <button
-        onClick={() => {
-          searchBooks();
+      <SearchBar
+        query={query}
+        setQuery={setQuery}
+        searchBooks={() => {
+          setPage(1);
+          findBooks();
         }}
-      >
-        검색{" "}
-      </button>
+      />
     </div>
   );
 }
