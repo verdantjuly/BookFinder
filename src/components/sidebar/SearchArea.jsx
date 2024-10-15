@@ -7,7 +7,7 @@ import BookList from "./BookList";
 import "./SearchArea.css";
 import Pagination from "./Pagination";
 
-export default function SearchArea({ setBook }) {
+export default function SearchArea() {
   const [query, setQuery] = useState("한강");
   const [page, setPage] = useState(1);
   const [books, setBooks] = useState([]);
@@ -37,7 +37,7 @@ export default function SearchArea({ setBook }) {
   return (
     <div className="search-area">
       <SearchBar query={query} setQuery={setQuery} setIsFound={setIsFound} />
-      <BookList books={books} setBook={setBook} />
+      <BookList books={books} />
       <Pagination page={page} setPage={setPage} isEnd={isEnd} />
     </div>
   );

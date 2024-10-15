@@ -1,6 +1,9 @@
+import { useContext } from "react";
+import { BookContext } from "./BookContext";
 import "./BookDetail.css";
 
-export default function BookDetail({ book }) {
+export default function BookDetail() {
+  const { book } = useContext(BookContext);
   if (!book) {
     return <div className="book-detail">책을 선택하세요.</div>;
   }
