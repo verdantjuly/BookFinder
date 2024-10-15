@@ -17,7 +17,7 @@ export default function Pagination({ page, setPage, searchBooks, isEnd }) {
           이전
         </button>
         <span>{page}</span>
-        <button onClick={handleNext} disabled={isEnd === true}>
+        <button onClick={handleNext} disabled={isEnd}>
           다음
         </button>
       </div>
