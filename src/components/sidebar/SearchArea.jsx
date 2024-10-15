@@ -12,40 +12,33 @@ export default function SearchArea({ setBook }) {
   const [page, setPage] = useState(1);
   const [books, setBooks] = useState([]);
   const [isEnd, setIsEnd] = useState(true);
-  const findBooks = async () => {
-    const response = await axios.get(`https://dapi.kakao.com/v3/search/book`, {
-      headers: {
-        Authorization: `KakaoAK ${process.env.REACT_APP_REST_API}`,
-      },
-      params: { query, page, size: 5 },
-    });
-    const data = response.data;
+  const [isFound, setIsFound] = useState(false);
 
-    setIsEnd(data.meta.is_end);
-    setBooks(data.documents);
-  };
   useEffect(() => {
+    const findBooks = async () => {
+      const response = await axios.get(
+        `https://dapi.kakao.com/v3/search/book`,
+        {
+          headers: {
+            Authorization: `KakaoAK ${process.env.REACT_APP_REST_API}`,
+          },
+          params: { query, page, size: 5 },
+        }
+      );
+      const data = response.data;
+
+      setIsEnd(data.meta.is_end);
+      setBooks(data.documents);
+      setIsFound(false);
+    };
     findBooks();
-  }, [page, query]);
+  }, [isFound, page]);
 
   return (
     <div className="search-area">
-      <SearchBar
-        query={query}
-        setQuery={setQuery}
-        findBooks={findBooks}
-        searchBooks={() => {
-          setPage(1);
-          findBooks();
-        }}
-      />
+      <SearchBar query={query} setQuery={setQuery} setIsFound={setIsFound} />
       <BookList books={books} setBook={setBook} />
-      <Pagination
-        page={page}
-        setPage={setPage}
-        searchBooks={findBooks}
-        isEnd={isEnd}
-      />
+      <Pagination page={page} setPage={setPage} isEnd={isEnd} />
     </div>
   );
 }

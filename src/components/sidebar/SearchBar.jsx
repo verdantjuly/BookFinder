@@ -1,9 +1,9 @@
 import "./SearchBar.css";
 
-export default function SearchBar({ query, setQuery, findBooks }) {
+export default function SearchBar({ setQuery, setIsFound }) {
   const handleSearch = (event) => {
     event.preventDefault();
-    findBooks();
+    setIsFound(true);
   };
   return (
     <form className="search-bar" onSubmit={handleSearch}>

@@ -1,13 +1,11 @@
 import "./Pagination.css";
 
-export default function Pagination({ page, setPage, searchBooks, isEnd }) {
+export default function Pagination({ page, setPage, isEnd }) {
   const handlePrev = () => {
     setPage(page - 1);
-    searchBooks();
   };
   const handleNext = () => {
     setPage(page + 1);
-    searchBooks();
   };
   return (
     <div>
