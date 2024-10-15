@@ -8,27 +8,27 @@ export default function BookDetail({ book }) {
     <div className="book-detail">
       <h2>{book.title}</h2>
       <p>
-        <b>저자 : </b>
+        <strong>저자 : </strong>
         {book.authors.join(", ")}
       </p>
       <p>
-        <b>출판사 : </b>
+        <strong>출판사 : </strong>
         {book.publisher}
       </p>
       <p>
-        <b>출판일 : </b>
+        <strong>출판일 : </strong>
         {book.datetime}
       </p>
       <p>
-        <b>ISBN : </b>
+        <strong>ISBN : </strong>
         {book.isbn}
       </p>
       <p>
-        <b>설명 : </b>
+        <strong>설명 : </strong>
         {book.contents}
       </p>
       <p>
-        <b>URL : </b>
+        <strong>URL : </strong>
         <a src={book.url}>상세정보</a>
       </p>
       <img src={book.thumbnail} alt={`${book.title}의 썸네일`} />
