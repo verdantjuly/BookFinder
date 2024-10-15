@@ -1,5 +1,9 @@
 import "./Footer.css";
 
 export default function Footer() {
-  return <footer>© 2024 Book Finder</footer>;
+  return (
+    <footer>
+      <h3>© 2024 Book Finder LDY</h3>
+    </footer>
+  );
 }
