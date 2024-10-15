@@ -14,7 +14,7 @@ export default function BookList({ books, setBook }) {
           <img src={book.thumbnail} alt={`${book.title}의 썸네일`} />
           <div className="book-info">
             <h3>{book.title}</h3>
-            <p>{book.authors}</p>
+            <p>{book.authors.join(", ")}</p>
           </div>
         </div>
       ))}

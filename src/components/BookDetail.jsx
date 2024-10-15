@@ -9,7 +9,7 @@ export default function BookDetail({ book }) {
       <h2>{book.title}</h2>
       <p>
         <b>저자 : </b>
-        {book.authorName}
+        {book.authors.join(", ")}
       </p>
       <p>
         <b>출판사 : </b>
