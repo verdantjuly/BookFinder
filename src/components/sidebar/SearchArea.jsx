@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import SearchBar from "./SearchBar";
 import BookList from "./BookList";
@@ -12,17 +12,21 @@ export default function SearchArea({ setBook }) {
   const [page, setPage] = useState(1);
   const [books, setBooks] = useState([]);
   const [isEnd, setIsEnd] = useState(true);
-
   const findBooks = async () => {
     const response = await axios.get(`https://dapi.kakao.com/v3/search/book`, {
-      headers: { Authorization: `KakaoAK ${process.env.REACT_APP_REST_API}` },
-      params: { query, page, size: 10 },
+      headers: {
+        Authorization: `KakaoAK ${process.env.REACT_APP_REST_API}`,
+      },
+      params: { query, page, size: 5 },
     });
     const data = response.data;
 
     setIsEnd(data.meta.is_end);
     setBooks(data.documents);
   };
+  useEffect(() => {
+    findBooks();
+  }, [page, query]);
 
   return (
     <div className="search-area">
