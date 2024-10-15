@@ -11,7 +11,7 @@ export default function SearchArea({ setBook }) {
   const [query, setQuery] = useState("한강");
   const [page, setPage] = useState(1);
   const [books, setBooks] = useState([]);
-  const [isEnd, setIsEnd] = useState(false);
+  const [isEnd, setIsEnd] = useState(true);
 
   const findBooks = async () => {
     const response = await axios.get(`https://dapi.kakao.com/v3/search/book`, {
@@ -19,9 +19,8 @@ export default function SearchArea({ setBook }) {
       params: { query, page, size: 10 },
     });
     const data = response.data;
-    if (data.meta.is_end === true) {
-      setIsEnd(true);
-    }
+
+    setIsEnd(data.meta.is_end);
     setBooks(data.documents);
   };
 
